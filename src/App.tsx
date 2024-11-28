@@ -28,6 +28,10 @@ export const App: React.FC = () => {
         setTodos(data);
         setFilteredTodos(data);
       })
+      .catch(error => {
+        /* eslint-disable no-console */
+        console.error('Failed to fetch todos:', error);
+      })
       .finally(() => setIsLoading(false));
   }, []);
 
@@ -55,6 +59,9 @@ export const App: React.FC = () => {
 
     getUser(todo.userId)
       .then(user => setSelectedUser(user))
+      .catch(error => {
+        console.error('Failed to fetch user:', error)
+      })
       .finally(() => setIsModalLoading(false));
   };
 

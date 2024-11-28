@@ -1,4 +1,5 @@
 import { Todo } from '../../types/Todo';
+import classNames from 'classnames';
 
 interface Props {
   todos: Todo[];
@@ -46,14 +47,16 @@ export const TodoList: React.FC<Props> = ({ todos, selectedTodo, onShow }) => (
               className="button"
               type="button"
               onClick={() => onShow(todo)}
+              aria-label={
+                selectedTodo?.id === todo.id ? 'Hide todo' : 'View todo'
+              }
             >
               <span className="icon">
                 <i
-                  className={
-                    selectedTodo?.id === todo.id
-                      ? 'far fa-eye-slash'
-                      : 'far fa-eye'
-                  }
+                  className={classNames('far', {
+                    'fa-eye': selectedTodo?.id !== todo.id,
+                    'fa-eye-slash': selectedTodo?.id === todo.id,
+                  })}
                 />
               </span>
             </button>

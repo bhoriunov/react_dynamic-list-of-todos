@@ -10,12 +10,7 @@ interface Props {
   onClose: () => void;
 }
 
-export const TodoModal: React.FC<Props> = ({
-  todo,
-  user,
-  isLoading,
-  onClose,
-}) => (
+export const TodoModal: React.FC<Props> = ({ todo, user, isLoading, onClose }) => (
   <div className="modal is-active" data-cy="modal">
     <div className="modal-background" />
 
@@ -37,6 +32,7 @@ export const TodoModal: React.FC<Props> = ({
             className="delete"
             data-cy="modal-close"
             onClick={onClose}
+            aria-label="Close modal"
           />
         </header>
 
